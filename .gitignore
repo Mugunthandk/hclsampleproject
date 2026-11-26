@@ -4,3 +4,6 @@ test-output/
 .idea/
 .vscode/
 .sf/
+python-automation/reports/
+python-automation/tests/__pycache__/
+python-automation/.pytest_cache/

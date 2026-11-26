@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="E-Commerce Automation Suite"
-       parallel="classes"
-       thread-count="2"
-       data-provider-thread-count="3">
+<suite name="E-Commerce Automation Suite" parallel="classes" thread-count="2" data-provider-thread-count="3">
 
     <listeners>
         <listener class-name="com.example.utilities.TestListener"/>
@@ -17,6 +14,7 @@
             <class name="com.example.tests.ExcelLoginTest"/>
             <class name="com.example.api.ApiTest"/>
             <class name="com.example.cucumber.runner.TestRunner"/>
+            <class name="com.example.tests.DatabaseTest"/>
         </classes>
     </test>
 
