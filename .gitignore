@@ -7,3 +7,4 @@ test-output/
 python-automation/reports/
 python-automation/tests/__pycache__/
 python-automation/.pytest_cache/
+jmeter/results/
