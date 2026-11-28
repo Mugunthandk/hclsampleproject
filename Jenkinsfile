@@ -1,26 +1,22 @@
-﻿@'
 pipeline {
     agent any
 
     stages {
-
         stage('Checkout') {
             steps {
-                echo 'Checking out source code from GitHub'
+                echo 'Checking out source code'
                 checkout scm
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Compiling Java project'
                 bat 'mvn clean compile'
             }
         }
 
-        stage('Run Automation Tests') {
+        stage('Run Tests') {
             steps {
-                echo 'Running Selenium, TestNG, Cucumber, API and Database tests'
                 bat 'mvn test'
             }
         }
@@ -36,14 +32,11 @@ pipeline {
         always {
             echo 'Automation Pipeline Completed'
         }
-
         success {
-            echo 'All automation tests passed successfully!'
+            echo 'All tests passed!'
         }
-
         failure {
-            echo 'Pipeline failed. Please check Console Output.'
+            echo 'Pipeline failed. Check Console Output.'
         }
     }
 }
-'@ | Set-Content -Path "Jenkinsfile" -Encoding UTF8
