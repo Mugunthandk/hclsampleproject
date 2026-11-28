@@ -26,7 +26,9 @@ public class BaseTest {
         try {
 
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("--start-maximized");
+            options.addArguments("--headless=new");
+            options.addArguments("--disable-gpu");
+            options.addArguments("--window-size=1920,1080");
 
             WebDriver browser = new ChromeDriver(options);
 
