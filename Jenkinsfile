@@ -1,4 +1,4 @@
-pipeline {
+﻿pipeline {
     agent any
 
     stages {
@@ -24,6 +24,19 @@ pipeline {
         stage('Publish Test Results') {
             steps {
                 junit '**/target/surefire-reports/*.xml'
+            }
+        }
+
+        stage('Publish HTML Report') {
+            steps {
+                publishHTML(target: [
+                    reportDir: 'target/surefire-reports',
+                    reportFiles: 'index.html',
+                    reportName: 'TestNG HTML Report',
+                    keepAll: true,
+                    alwaysLinkToLastBuild: true,
+                    allowMissing: true
+                ])
             }
         }
     }
