@@ -1,3 +1,4 @@
+﻿
 pipeline {
     agent any
 
@@ -43,15 +44,23 @@ pipeline {
             }
         }
 
+        stage('Run JMeter Performance Test') {
+            steps {
+                bat '''
+                    "C:\\Users\\CSE LAB - 2\\Downloads\\apache-jmeter-5.6.3\\apache-jmeter-5.6.3\\bin\\jmeter.bat" -n -t "jmeter\\ECommerce Load Test.jmx" -l "jmeter\\results\\jenkins-run.jtl" -e -o "jmeter\\results\\jenkins-html-report"
+                '''
+            }
+        }
+
         stage('Publish JMeter Report') {
             steps {
                 publishHTML(target: [
-                    reportDir: 'jmeter/results/final-html-report',
+                    reportDir: 'jmeter/results/jenkins-html-report',
                     reportFiles: 'index.html',
                     reportName: 'JMeter HTML Report',
                     keepAll: true,
                     alwaysLinkToLastBuild: true,
-                    allowMissing: true
+                    allowMissing: false
                 ])
             }
         }
